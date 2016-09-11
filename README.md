@@ -1,2 +1,2 @@
 #some_stuff
-there is some scripts.
+Enjoy my scripts. ;)
