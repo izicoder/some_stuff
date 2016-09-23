@@ -7,4 +7,5 @@ def sieve(n):
         p = ls[ls.index(p) + 1]
     return list(ls)
 
-print(sieve(120))
+if __name__ == '__main__':
+    print(sieve(120))

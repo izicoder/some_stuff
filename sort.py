@@ -6,10 +6,8 @@ def sort(ls):
                 ls[i], ls[j] = ls[j], ls[i]
             j += 1
 
-ls = [int(input()) for i in range(10)]
-
-print(ls)
-
-sort(ls)
-
-print(ls)
+if __name__ == '__main__':
+    ls = [int(input()) for i in range(10)]
+    print(ls)
+    sort(ls)
+    print(ls)

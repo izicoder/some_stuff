@@ -1,3 +1,4 @@
+# game class
 class Game:
     def __init__(self):
         from random import randint
@@ -24,4 +25,6 @@ class Game:
             else:
                 print('Too big!')
 
-Game()
+# running
+if __name__ == '__main__':
+    Game()

@@ -11,7 +11,8 @@ def scan(host):
         print('=' * 10, 'port #{}'.format(p))
         conn_to(host, p)
 
-if len(argv) == 1:
-    scan('localhost')
-else:
-    scan(argv[1])
+if __name__ == '__main__':
+    if len(argv) == 1:
+        scan('localhost')
+    else:
+        scan(argv[1])
