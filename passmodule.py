@@ -2,6 +2,7 @@ import random as _random
 import string as _string
 
 
+# generating word
 def _gen_word(length):
     'This hidden function generate and return random word'
     return ''.join((
@@ -12,6 +13,7 @@ def _gen_word(length):
         for i in range(length)))
 
 
+# generating more
 def generate(count=1, length=10):
     'This function return random word(s)'
     assert count >= 1, 'count must be 1 or greater'

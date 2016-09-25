@@ -1,3 +1,4 @@
+# bubble sorting function
 def sort(ls):
     for i in range(len(ls)):
         j = i + 1

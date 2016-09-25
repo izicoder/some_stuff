@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
 from sys import argv
 from lxml import html
 from requests import get
 
 # global variables
-
 WORD = (
     argv[1]
     if len(argv) == 2
@@ -15,9 +13,8 @@ FILE = (
     if len(argv) == 3
     else "grab.txt")
 
+
 # working functions
-
-
 def gen_url(word):
     return "http://merriam-webster.com/dictionary/" + word
 
@@ -34,9 +31,8 @@ def print_to_file(defs):
             print("-"*15, file=f)
             print(i, file=f)
 
+
 # main function
-
-
 def main():
     tree = html.fromstring(get_page(WORD))
     defs = tree.xpath(
@@ -46,6 +42,5 @@ def main():
     print_to_file(defs)
 
 # running
-
 if __name__ == "__main__":
     main()

@@ -1,3 +1,4 @@
+# sieve of Erathospher
 def sieve(n):
     ls = range(2, n + 1)
     p = 2
