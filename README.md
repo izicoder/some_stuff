@@ -1,2 +1,2 @@
 #some_stuff
-Enjoy my scripts. ;)
+Enjoy my stuff. \(^_^)/
