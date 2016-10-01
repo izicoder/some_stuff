@@ -34,8 +34,43 @@ class Map:
             for x in range(width):
                 self.matrix[y].append(Cell(x, y))
 
+    def comfort_coord(self, x, y):
+        x = (
+            self.width-abs(x)
+            if x < 0
+            else
+            self.width-x
+            if x >= self.width
+            else x)
+
+        y = (
+            self.height-abs(y)
+            if y < 0
+            else
+            self.height-y
+            if y >= self.height
+            else
+            y)
+
+        if 0 <= x < self.width and 0 <= y < self.height:
+            return x, y
+        else:
+            return self.comfort_coord(x, y)
+
     def get_cell(self, x, y):
+        x, y = self.comfort_coord(x, y)
         return self.matrix[y][x]
+
+
+# map printing function
+def print_map(scr, gamemap, xshf=0, yshf=0, life='#', dead=' '):
+    for y in range(gamemap.height):
+        for x in range(gamemap.width):
+            scr.addch(
+                y+yshf,
+                x+xshf,
+                dead if gamemap.get_cell(y, x).is_dead else life)
+    scr.refresh()
 
 
 # curses exception decorator
@@ -54,7 +89,13 @@ def excwrap(fun):
 @excwrap
 def main():
     scr = curses.initscr()
-    scr.addstr(1, 1, 'hello world')
+    gmap = Map(5, 5)
+
+    for y in range(1, 4):
+        for x in range(1, 4):
+            gmap.get_cell(x, y).is_dead = False
+
+    print_map(scr, gmap, dead='.')
     scr.getkey()
 
 if __name__ == '__main__':
