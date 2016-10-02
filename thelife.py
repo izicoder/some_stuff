@@ -34,7 +34,7 @@ class Map:
             for x in range(width):
                 self.matrix[y].append(Cell(x, y))
 
-    def comfort_coord(self, x, y):
+    def calc_coord(self, x, y):
         x = (
             self.width-abs(x)
             if x < 0
@@ -55,10 +55,10 @@ class Map:
         if 0 <= x < self.width and 0 <= y < self.height:
             return x, y
         else:
-            return self.comfort_coord(x, y)
+            return self.calc_coord(x, y)
 
     def get_cell(self, x, y):
-        x, y = self.comfort_coord(x, y)
+        x, y = self.calc_coord(x, y)
         return self.matrix[y][x]
 
 
@@ -91,8 +91,8 @@ def main():
     scr = curses.initscr()
     gmap = Map(5, 5)
 
-    for y in range(1, 4):
-        for x in range(1, 4):
+    for y in range(-1, 2):
+        for x in range(-1, 2):
             gmap.get_cell(x, y).is_dead = False
 
     print_map(scr, gmap, dead='.')
