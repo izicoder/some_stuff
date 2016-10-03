@@ -1,2 +1,2 @@
 #some_stuff
-Enjoy my stuff. \(^_^)/
+Enjoy my stuff. \\(^_^)/
