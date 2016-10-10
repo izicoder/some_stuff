@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import curses
+import sys
 from random import randint
 
 
@@ -10,7 +11,7 @@ class Cell:
 
         # True - alive, False - dead
         self.state = False
-        self.next_state = False  # state for next generation
+        self.next_state = None  # state for next generation
 
         # cell neighbors
         self.neighbors = (
@@ -94,9 +95,9 @@ class Logic:
         for y in range(self.map.height):
             for x in range(self.map.width):
                 cell = self.map.get_cell(x, y)
-                if cell.state == cell.next_state:
-                    return True
-        return False
+                if cell.state != cell.next_state:
+                    return False
+        return True
 
 
 # random map init
@@ -133,7 +134,7 @@ def excwrap(fun):
 
 # test function
 @excwrap
-def test():
+def main():
     scr = curses.initscr()
     curses.curs_set(0)
     scr.nodelay(1)
@@ -144,7 +145,12 @@ def test():
 
     logic = Logic(cm)
 
-    rand_init(cm, int(WIN_HEIGHT*WIN_WITDH/10))
+    try:
+        count = int(sys.argv[1])
+    except IndexError or ValueError:
+        count = int((WIN_HEIGHT * WIN_WITDH) / 10)
+
+    rand_init(cm, count)
 
     while True:
         print_map(scr, cm)
@@ -167,4 +173,9 @@ def test():
 
 
 if __name__ == '__main__':
-    test()
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit()
+    except Exception:
+        sys.exit()
