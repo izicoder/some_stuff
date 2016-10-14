@@ -132,7 +132,7 @@ def excwrap(fun):
     return wrapped
 
 
-# test function
+# main function
 @excwrap
 def main():
     scr = curses.initscr()
