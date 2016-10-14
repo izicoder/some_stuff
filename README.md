@@ -7,3 +7,5 @@ Enjoy my stuff. \\(^_^)/
             count - count of cells
         desc:
             Conway's the game of life.
+        requirements:
+            curses
