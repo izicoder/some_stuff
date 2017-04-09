@@ -81,7 +81,7 @@ class Logic:
                 cell = self.map.get_cell(x, y)
                 cell.state = cell.next_state
 
-    # if all cell is dead
+    # if all cells is dead
     def all_is_dead(self):
         for y in range(self.map.height):
             for x in range(self.map.width):
